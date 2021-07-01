@@ -42,7 +42,7 @@ public class Contact {
 
 		System.out.println(
 				"Please enter a new contact, seperating each value by a comma. \nYou may copy and paste a pre-formatted value.");
-		System.out.println("Full Name, Street address, City, State, Zip code, Phone number");
+		System.out.println("Full Name, Street address, City, State, Zip code, Phone number \n");
 
 		String tempNewCont = input.nextLine();
 		tempNewCont.toUpperCase();
@@ -57,11 +57,11 @@ public class Contact {
 
 		if (contactArray.length != 6) {
 			System.out.println("Incorrect Format");
-			addContact(); // add a "continue or exit" option
+			addContact(); 
 		}
-// format name : Functional! as long as user only has 1 middle name
-		String[] nameSplit = tempFullName.split(" "); // .toUpperCase() <--removed
-		for (int i = 0; i < nameSplit.length; i++) { // for loop to correct capitalization
+// format name
+		String[] nameSplit = tempFullName.split(" ");
+		for (int i = 0; i < nameSplit.length; i++) {
 			nameSplit[i] = nameSplit[i].charAt(0) + nameSplit[i].substring(1).toLowerCase();
 		}
 
@@ -80,10 +80,11 @@ public class Contact {
 			newPerson.setLastName(lastName);
 		}
 
-//		String f = String.join(" ", nameSplit);
-//		String fullName = f;
+		String f = String.join(" ", nameSplit);
+		String fullName = f;
+		newPerson.setFullName(fullName);
 
-// format street address - Functional
+// format street address
 		String[] addressSplit = tempStreetAdd.split(" ");
 		for (int i = 0; i < addressSplit.length; i++) {
 			addressSplit[i] = addressSplit[i].charAt(0) + addressSplit[i].substring(1).toLowerCase();
@@ -93,7 +94,7 @@ public class Contact {
 		String address = s;
 		newAddress.setStreetAdd(address);
 
-// format city - 
+// format city
 		String[] citySplit = tempCity.split(" ");
 		for (int i = 0; i < citySplit.length; i++) {
 			citySplit[i] = citySplit[i].charAt(0) + citySplit[i].substring(1).toLowerCase();
@@ -103,7 +104,7 @@ public class Contact {
 		String city = c;
 		newAddress.setCity(city);
 
-// format state : Functional! but doesn't error for numbers
+// format state
 		if (tempState.length() == 2 && !tempState.matches("(0|[1-9]\\d*)")) {
 			String state = tempState.toUpperCase();
 			newAddress.setState(state);
@@ -111,7 +112,7 @@ public class Contact {
 			System.out.println("Error: Please use the 2 letter state abbreviation in your entry.");
 		}
 
-// format zipCode : Functional!
+// format zipCode
 		if (tempZipCode.length() == 5 && tempZipCode.matches("(0|[1-9]\\d*)")) {
 			String zipCode = tempZipCode;
 			newAddress.setZipCode(zipCode);
@@ -119,7 +120,7 @@ public class Contact {
 			System.out.println("Error: Please use a 5 digit zipcode with no punctuation");
 		}
 
-// format phoneNumber : Functional!
+// format phoneNumber
 		if (tempPhoneNumber.length() == 10 && tempPhoneNumber.matches("(0|[1-9]\\d*)")) {
 			String phoneNumber = tempPhoneNumber;
 			newAddress.setPhoneNumber(phoneNumber);
@@ -145,31 +146,19 @@ public class Contact {
 		contactList[i] = newContact;
 
 		// Print new array and confirm it has been added to the phone book.
-		System.out.println(newContact.toString() + "\n ***The entry has been added to the phone book***\n");
+		System.out.println(newContact.toString() + "\n ***The entry has been added to the phone book***\n \n ***Current Contacts*** \n");
 
 		// prints all contacts
 		for (Contact contact : contactList) {
 			System.out.println(contact);
 		}
-
+		System.out.println("\n");
 		continueUsing();
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//	public static void addToArray(Contact contact) { // Functional!
-//		for (int i = 0; i < contactList.length; i++) {
-//			if (contactList[i] == null) { // adds to every remaining array spot!
-//				contactList[i] = contact;
-//				break; // use break to stop after first 'null' contact
-//			}
-//			System.out.println(contactList[i] + " =contact list [i]" + "\n" + contact + " =contact ");
-//		}
-//	}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	public static void continueUsing() { // Functional!
+	public static void continueUsing() { 
 		Scanner input = new Scanner(System.in);
 		System.out.println("Would you like to continue using the phonebook? Y/N");
 
@@ -183,7 +172,7 @@ public class Contact {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void removeContact() { // case 2 - Functional! (with correct phone number format)
+	public static void removeContact() { // case 2
 		Scanner input = new Scanner(System.in);
 		System.out.println("*****************************************"
 				+ "\nPlease enter the phone number of the contact you would like to remove. (no spaces or punctuation)");
@@ -217,9 +206,8 @@ public class Contact {
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public static void listContact() { // case 3 ////doesn't work
+	public static void listContact() {
 
-//		bubbleSort
 		int n = contactList.length;
 		for (int i = 0; i < n - 1; i++) {
 			for (int j = 0; j < n - i - 1; j++) {
@@ -235,49 +223,20 @@ public class Contact {
 		for (Contact contact : contactList) {
 			System.out.println(contact);
 		}
+			System.out.println("\n");
 			continueUsing();
 			
 		}
 
-	
-//		
-//		int counter = 0;
-//		for (int i = 0; i < contactList.length; i++) {
-//			if (contactList[i] != null) {
-//				counter++;
-//			}
-//		}
-//		String[] nameArray = new String[counter];
-//		for (int i = 0; i < nameArray.length; i++) {
-//			if (nameArray[i] == null) {
-//				nameArray[i] = contactList[i];
-//			}
-//		}
-//		if (nameArray.length > 0) {
-//			Arrays.sort(nameArray);
-//			for (int i = 0; i < nameArray.length; i++) {
-//				System.out.println(nameArray[i]);
-//			}
-//			System.out.println("\n");
-//		}
-
-//		String[] sortedList = new String[contactList.length];
-//
-//		for (int i = 0; i < contactList.length; i++) {
-//			sortedList[i] = contactList[i].getPerson().getFirstName();
-//		}
-//		Arrays.sort(contactList);
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void searchContact() { // case 4 ////Only works for phone numbers  //add switch with search criteria
+	public static void searchContact() { 
 
 		System.out.println("******************************************************");
 		System.out.println("Please select your search criteria.\nSearch By:");
 
 		Scanner input = new Scanner(System.in);
-//		String newSearch = input.nextLine();
-		System.out.println("1: First Name \n2: Middle Name \n3: Last Name \n4: Street Address \n5: City \n6: State \n7: Zip Code \n8: Phone Number \n9: Exit Search");
+		System.out.println("1: Name \n2: Street Address \n3: City \n4: State \n5: Zip Code \n6: Phone Number \n7: Exit Search");
 		
 		try {
 
@@ -285,50 +244,87 @@ public class Contact {
 
 			int menu = Integer.parseInt(temp);
 
-			switch (menu) { // Methods I need to write
-
+			switch (menu) { 
+			
 			case 1:
-				System.out.println("First Name: Enter your search");
-				String firstSearch = input.next();
-				
-				for (Contact entry : contactList) {
-					if (entry.getPerson().getFirstName().equalsIgnoreCase(firstSearch)) {
-						System.out.println(entry);
-					}else {
-						System.out.println("No contacts match your search.");
+								
+				try {
+					System.out.println("Which name you you like to use for your search? \n1: First name \n2: Middle name \n3: Last name \n4 Full name \n");
+					String nameTemp = input.next();
+					int subMenu = Integer.parseInt(nameTemp);
+					switch (subMenu) {
+					
+					case 1:
+						System.out.println("First Name: Enter your search");
+						String firstSearch = input.next();
+						
+						for (Contact entry : contactList) {
+							if (entry.getPerson().getFirstName().equalsIgnoreCase(firstSearch)) {
+								System.out.println(entry);
+							}else {
+								System.out.println("No contacts match your search.");
+							}
+						}
+						continueSearching();
+						break;
+					case 2: 
+						System.out.println("Middle Name: Enter your search");
+						String middleSearch = input.next();
+						
+						for (Contact entry : contactList) {
+							if (entry.getPerson().getMiddleName().equalsIgnoreCase(middleSearch)) {
+								System.out.println(entry);
+								continueSearching();
+							}else {
+								System.out.println("No contacts match your search.");
+							}
+						}
+						continueSearching();
+						break;
+					case 3:
+						System.out.println("Last Name: Enter your search");
+						String lastSearch = input.next();
+						
+						for (Contact entry : contactList) {
+							if (entry.getPerson().getLastName().equalsIgnoreCase(lastSearch)) {
+								System.out.println(entry);
+								continueSearching();
+							}else {
+								System.out.println("No contacts match your search.");
+							}
+						}
+						continueSearching();
+						break;		
+					case 4:
+						System.out.println("Full Name: Enter your search");
+						String fullSearch = input.next();
+						
+						for (Contact entry : contactList) {
+							if (entry.getPerson().getFullName().equalsIgnoreCase(fullSearch)) {
+								System.out.println(entry);
+								continueSearching();
+							}else {
+								System.out.println("No contacts match your search.");
+							}
+						}
+						continueSearching();
+						break;	
+					case 5: 
+						MainMenu.mainMenu();
+						break;
+						
+					default: //catches wrong number inputs
+						System.out.println("default Invalid entry: Please choose an option \n");
+						searchContact();
+						break;
 					}
+
+				} catch (NumberFormatException e) { //catches non-integer input
+					System.out.println("catch Invalid entry, please choose number 1 - 9 \n");
+					searchContact();
 				}
-				continueSearching();
-				break;
+
 			case 2: 
-				System.out.println("Middle Name: Enter your search");
-				String middleSearch = input.next();
-				
-				for (Contact entry : contactList) {
-					if (entry.getPerson().getMiddleName().equalsIgnoreCase(middleSearch)) {
-						System.out.println(entry);
-						continueSearching();
-					}else {
-						System.out.println("No contacts match your search.");
-					}
-				}
-				continueSearching();
-				break;
-			case 3:
-				System.out.println("Last Name: Enter your search");
-				String lastSearch = input.next();
-				
-				for (Contact entry : contactList) {
-					if (entry.getPerson().getLastName().equalsIgnoreCase(lastSearch)) {
-						System.out.println(entry);
-						continueSearching();
-					}else {
-						System.out.println("No contacts match your search.");
-					}
-				}
-				continueSearching();
-				break;
-			case 4: 
 				System.out.println("Street Address: Enter your search");
 				String streetSearch = input.next();
 				
@@ -342,7 +338,7 @@ public class Contact {
 				}
 				continueSearching();
 				break;
-			case 5: 
+			case 3: 
 				System.out.println("City: Enter your search");
 				String citySearch = input.next();
 				
@@ -356,7 +352,7 @@ public class Contact {
 				}
 				continueSearching();
 				break;
-			case 6: 
+			case 4: 
 				System.out.println("State: Enter your search");
 				String stateSearch = input.next();
 				
@@ -370,7 +366,7 @@ public class Contact {
 				}
 				continueSearching();
 				break;
-			case 7: 
+			case 5: 
 				System.out.println("Zip Code: Enter your search");
 				String zipSearch = input.next();
 				
@@ -384,7 +380,7 @@ public class Contact {
 				}
 				continueSearching();
 				break;
-			case 8: 
+			case 6: 
 				System.out.println("Phone Number: Enter your search");
 				String phoneSearch = input.next();
 				
@@ -398,7 +394,7 @@ public class Contact {
 				}
 				continueSearching();
 				break;
-			case 9: 
+			case 7: 
 				MainMenu.mainMenu();
 				break;
 				
@@ -409,14 +405,14 @@ public class Contact {
 			}
 
 		} catch (NumberFormatException e) { //catches non-integer input
-			System.out.println("catch Invalid entry, please choose number 1 - 9 \n");
+			System.out.println("catch Invalid entry, please choose number 1 - 7 \n");
 			searchContact();
 		}
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void continueSearching() { // Functional!
+	public static void continueSearching() { 
 		Scanner input = new Scanner(System.in);
 		System.out.println("Would you like to search again? Y/N");
 
@@ -436,15 +432,6 @@ public class Contact {
 
 		System.out.println("*****************************************");
 		System.out.print("Enter Contact Phone Number (with no punctuation): ");
-
-//		String tempPhoneNumber = input.next();
-//
-//		String phoneNumberFormatted = ("(" + tempPhoneNumber.charAt(0) + tempPhoneNumber.charAt(1)
-//				+ tempPhoneNumber.charAt(2) + ") " + tempPhoneNumber.charAt(3) + tempPhoneNumber.charAt(4)
-//				+ tempPhoneNumber.charAt(5) + "-" + tempPhoneNumber.charAt(6) + tempPhoneNumber.charAt(7)
-//				+ tempPhoneNumber.charAt(8) + tempPhoneNumber.charAt(9));
-//
-//		String update = phoneNumberFormatted;
 
 		String update = input.next();
 
@@ -472,51 +459,58 @@ public class Contact {
 						switch (edit) {
 
 						case 1:
-							System.out.print("*****************************************" + "\nEnter First Name: ");
+							System.out.print("*****************************************" + "\nEnter new first name: ");
 							update = input.next();
 							contactList[i].getPerson().setFirstName(update);
+							System.out.println("Contact updated. New listing: \n" + contactList[i]);
 							System.out.println("*****************************************");
 
 							break;
 						case 2:
-							System.out.print("*****************************************" + "\nEnter Middle Name: ");
+							System.out.print("*****************************************" + "\nEnter new middle name: ");
 							update = input.next();
 							contactList[i].getPerson().setMiddleName(update);
+							System.out.println("Contact updated. New listing: \n" + contactList[i]);
 							System.out.println("*****************************************");
 							break;
 						case 3:
-							System.out.print("*****************************************" + "\nEnter Last Name: ");
+							System.out.print("*****************************************" + "\nEnter new last name: ");
 							update = input.next();
 							contactList[i].getPerson().setLastName(update);
+							System.out.println("Contact updated. New listing: \n" + contactList[i]);
 							System.out.println("*****************************************");
 							break;
 						case 4:
-							System.out.print("*****************************************" + "\nEnter Street Address: ");
+							System.out.print("*****************************************" + "\nEnter new street address: ");
 							update = input.next();
 							contactList[i].getAddress().setStreetAdd(update);
+							System.out.println("Contact updated. New listing: \n" + contactList[i]);
 							System.out.println("*****************************************");
 							break;
 						case 5:
-							System.out.print("*****************************************" + "\nEnter City: ");
+							System.out.print("*****************************************" + "\nEnter new city: ");
 							update = input.next();
 							contactList[i].getAddress().setCity(update);
+							System.out.println("Contact updated. New listing: \n" + contactList[i]);
 							System.out.println("*****************************************");
 							break;
 						case 6:
-							System.out.print("*****************************************" + "\nEnter State: ");
+							System.out.print("*****************************************" + "\nEnter new state: ");
 							update = input.next();
 							contactList[i].getAddress().setState(update);
+							System.out.println("Contact updated. New listing: \n" + contactList[i]);
 							System.out.println("*****************************************");
 							break;
 						case 7:
-							System.out.print("*****************************************" + "\nEnter Zip Code: ");
+							System.out.print("*****************************************" + "\nEnter new zip code: ");
 							update = input.next();
 							contactList[i].getAddress().setZipCode(update);
+							System.out.println("Contact updated. New listing: \n" + contactList[i]);
 							System.out.println("*****************************************");
 							break;
 						case 8:
 							System.out
-									.print("*****************************************" + "\nEnter New Phone Number: ");
+									.print("*****************************************" + "\nEnter new phone number: ");
 							update = input.nextLine();
 							contactList[i].getAddress().setPhoneNumber(update);
 							System.out.println("*****************************************");
@@ -543,7 +537,7 @@ public class Contact {
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void continueEditing() { // Functional!
+	public static void continueEditing() { 
 		Scanner input = new Scanner(System.in);
 		System.out.println("Would you like to edit again? Y/N");
 
@@ -556,7 +550,7 @@ public class Contact {
 	}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void exitNow() { // case 6 - Functional
+	public static void exitNow() { // case 6
 
 		System.out.println("Thank you for using my phone book. Goodbye!");
 
