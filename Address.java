@@ -3,11 +3,11 @@ package phoneBook;
 public class Address{
 
 	//properties
-	protected String streetAdd;
-	protected String city;
-	protected String state;
-	protected String zipCode;
-	protected String phoneNumber; //should this be a string? Long? to account for dashes
+	private String streetAdd;
+	private String city;
+	private String state;
+	private String zipCode;
+	private String phoneNumber; 
 	
 	//parameterized constructor
 	public Address (String streetAdd, String city, String state, String zipCode, String phoneNumber) {
