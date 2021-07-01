@@ -3,9 +3,10 @@ package phoneBook;
 public class Person{
 	
 	//properties
-	protected String firstName;
-	protected String middleName;
-	protected String lastName;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String fullName;
 
 	//parameterized constructor
 	
@@ -14,14 +15,18 @@ public class Person{
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
+		
+		this.setFullName(firstName + middleName + lastName);
+		
+		
 	}
 	public String getFullName() {
 		return firstName + middleName + lastName;
 	}
 	
-//	public String setFullName() {
-//		this.fullName = fullName;
-//	}
+	public void setFullName(String fullName) {
+		this.fullName = firstName;
+	}
 	
 	public String getFirstName() {
 		return firstName;
