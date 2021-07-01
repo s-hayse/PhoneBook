@@ -16,14 +16,13 @@ public class MainMenu {
 		Person p1 = new Person("Robert", "", "Bray");
 		Address a1 = new Address("123 Blank Street", "Somewhere", "MO", "65542", "8162099202");
 		Person p2 = new Person("Margaret", "B", "Addams");
-		Address a2 = new Address("321 Road", "Anywhere", "AZ", "12345", "9786543201");
+		Address a2 = new Address("321 Road", "Anywhere", "MO", "12345", "9786543201");
 		Person p3 = new Person("Joe", "A", "Bishop");
 		Address a3 = new Address("629 Galactic Highway", "Nowhere", "MN", "54321", "1230456789");
 		Person p4 = new Person("Jeremy", "C", "Smithe");
 		Address a4 = new Address("589 Main St.", "Saint Louis", "MO", "98765", "6490873215");
 		
-		//Skippy the magnificant, 123 goat street, skippi stan, me, 12345, 9870123456
-		//(816) 209-9202
+		//Skippy the magnificant, 123 goat street, skippi stan, me, 12345, 9870123456 <---test case
 		
 		//Set starting contacts to Contact array
 		Contact person1 = new Contact(p1, a1);
@@ -59,26 +58,26 @@ public class MainMenu {
 
 			int menu = Integer.parseInt(temp);
 
-			switch (menu) { // Methods I need to write
+			switch (menu) { 
 
 			case 1: // addContact(); check capitalization formatting
 				System.out.println("1: Add a new contact\n");
 				Contact.addContact();
 				break;
-			case 2: //can't remove a newly added contact; errors into a loop when search fails
-				System.out.println("2: Remove a contact");
+			case 2: 
+				System.out.println("2: Remove a contact\n");
 				Contact.removeContact();
 				break;
 			case 3:
-				System.out.println("3: List contacts alphabetically");
+				System.out.println("3: List contacts alphabetically\n");
 				Contact.listContact();
 				break;
 			case 4: //prints 'null' in contacts that don't match search.  Functional, but not pretty
-				System.out.println("4: Search for a contact");
+				System.out.println("4: Search for a contact\n");
 				Contact.searchContact();
 				break;
 			case 5: 
-				System.out.println("5: Edit a contact");
+				System.out.println("5: Edit a contact\n");
 				Contact.editContact();
 				break;
 			case 6: 
